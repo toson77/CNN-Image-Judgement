@@ -1,13 +1,16 @@
 # Image-Judgement-AI
-実行環境
+
+## Overview
+お試しでKerasを使って書いた,CNN画像判定AI
+
+## Execution environment
 anaconda1.68
 tensorflow
 flask
 keras
 pillow
 
-起動方法(windows)
-ターミナル上で
-finalAIディレクトリ上で
+## Usage
+ディレクトリ上で
 set FLASK_APP=main.py
 flask run
