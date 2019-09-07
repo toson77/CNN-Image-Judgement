@@ -1,0 +1,176 @@
+<!-- main.pyから変数を渡してif文で分岐してます-->
+{% extends "layout.html" %}<!--共通テンプレート-->
+{% block content %}
+<html>
+<head>
+<meta charset="UTF-8">
+ <style>a{position:relative;}
+ img {
+ width: 180px;}
+</style>
+</head>
+{% if flag=="animal_none" or flag=="anime_none" or flag=="dogcat_none" %}
+  <body>
+  <h1>ファイルがありません</h1>
+  <p style="margin-bottom:5em"></p>
+  {% if flag=="animal_none" %}
+  <p><a href="/">戻る</a></p>
+  {% elif flag=="anime_none" %}
+  <p><a href="/anime">戻る</a></p>
+  {% elif flag=="dogcat_none" %}
+  <p><a href="/dogcat">戻る</a></p>
+  </body>
+  {% endif %}
+{% endif %}
+{% if flag=="main" %}
+  <body>
+  <h1>ファイルをアップロードしてください</h1>
+  <img src="/static/photos/saru.png" alt="Saru" title="Saru"  hspace="20">
+  <img src="/static/photos/inoshishi.png" alt="Inoshishi" title="Inoshishi" hspace="10">
+  <img src="/static/photos/karasu.png" alt="Karasu" title="Karasu" hspace="20">
+  <p>対応ファイル:jpg,png,gif</p>
+  <p></p>
+  <form method = post enctype=multipart/form-data>
+  <p><input type=file name=file>
+  <input type=submit value=Upload accept="image/jpeg,image/png,image/gif">
+  </form>
+  <p style="margin-bottom:2em"></p>
+  <p><a href="/anime">アニメ版</a></p>
+  <p style="margin-bottom:2em"></p>
+  <p><a href="/dogcat">犬猫版</a></p>
+  <p style="margin-bottom:2em"></p>
+  <p><a href="/bunken">参考文献</a></p>
+  </body>
+{% endif %}
+{% if percentages %}
+  <body>
+  <h1>判定:{{classes}}</h1>
+  <p>確率:{{percentages}}</p>
+  <div>
+     <img src="{{filepath}}" hspace="10" >
+     {% if classes=="猿"　%}
+     <img src="/static/photos/saru.png" alt="Saru" title="Saru" hspace="20">
+     {% elif classes=="イノシシ" %}
+     <img src="/static/photos/inoshishi.png" alt="Inoshishi" title="Inoshishi" hspace="20">
+     {% elif classes=="カラス" %}
+     <img src="/static/photos/karasu.png" alt="Karasu" title="Karasu" hspace="20">
+     {% endif %}
+   </div>
+   <p style="margin-bottom:2em"></p>
+   <p><a href="/">戻る</a></p>
+  </form>
+  </body>
+{% endif %}
+{% if flag=="anime" %}
+<body>
+<h1>ファイルをアップロードしてください</h1>
+<img src="/static/photos/miku.png" alt="miku" title="miku" hspace="20">
+<img src="/static/photos/remu.png" alt="remu" title="remu" hspace="20">
+<img src="/static/photos/chino.png" alt="chino" title="chino" hspace="20">
+<p>対応ファイル:jpg,png,gif</p>
+<p></p>
+<form method = post action='/anime' enctype=multipart/form-data>
+<p><input type=file name=file>
+<input type=submit value=Upload accept="image/jpeg,image/png,image/gif">
+</form>
+<p style="margin-bottom:2em"></p>
+<p><a href="/">動物版</a></p>
+<p style="margin-bottom:2em"></p>
+<p><a href="/dogcat">犬猫版</a></p>
+<p style="margin-bottom:2em"></p>
+<p><a href="/bunken">参考文献</a></p>
+</body>
+{% endif %}
+{% if percentages_anime %}
+  <body>
+  <h1>判定:{{classes}}</h1>
+  <p>確率:{{percentages_anime}}</p>
+  <div>
+     <img src="{{filepath}}" hspace="10" >
+     {% if classes=="ミク"　%}
+     <img src="/static/photos/miku.png" alt="miku" title="miku" hspace="20">
+     {% elif classes=="レム" %}
+     <img src="/static/photos/remu.png" alt="remu" title="remu" hspace="20">
+     {% elif classes=="チノ" %}
+     <img src="/static/photos/chino.png" alt="chino" title="chino" hspace="20">
+     {% endif %}
+   </div>
+   <p style="margin-bottom:2em"></p>
+   <p><a href="/anime">戻る</a></p>
+  </form>
+  </body>
+{% endif %}
+{% if flag=="dogcat" %}
+<body>
+<h1>ファイルをアップロードしてください</h1>
+<img src="/static/photos/dogs.png" alt="dog" title="dog" hspace="20">
+<img src="/static/photos/cats.png" alt="cat" title="cat" hspace="20">
+<p>対応ファイル:jpg,png,gif</p>
+<p></p>
+<form method = post action='/dogcat' enctype=multipart/form-data>
+<p><input type=file name=file>
+<input type=submit value=Upload accept="image/jpeg,image/png,image/gif">
+</form>
+<p style="margin-bottom:2em"></p>
+<p><a href="/">動物版</a></p>
+<p style="margin-bottom:2em"></p>
+<p><a href="/anime">アニメ版</a></p>
+<p style="margin-bottom:2em"></p>
+<p><a href="/bunken">参考文献</a></p>
+</body>
+{% endif %}
+{% if percentages_dogcat %}
+  <body>
+  <h1>判定:{{classes}}</h1>
+  <p>確率:{{percentages_dogcat}}</p>
+  <div>
+     <img src="{{filepath}}" hspace="10" >
+     {% if classes=="犬"　%}
+     <img src="/static/photos/dogs.png" alt="dog" title="dog" hspace="20">
+     {% elif classes=="猫" %}
+     <img src="/static/photos/cats.png" alt="cat" title="cat" hspace="20">
+     {% endif %}
+   </div>
+   <p style="margin-bottom:2em"></p>
+   <p><a href="/dogcat">戻る</a></p>
+  </form>
+  </body>
+{% endif %}
+{% if flag=="bunken" %}
+  <body>
+  <h1>参考文献<h1>
+  <p style="margin-bottom:1em"></p>
+  <font size="3>"
+  <p><b>ディープラーニングでザッカーバーグの顔を識別するAIを作る</b></p>
+    <p><a href="https://qiita.com/AkiyoshiOkano/items/72f3e4ba9caf514460ee">リンク</a></p>
+    <p>本当はこのサイトのような顔認証識別サイト作りたかったけれど、OpenCVまで手が出ませんでした。</p>
+    <p>css(bootstrap)はここから引用しました。cssをオフラインで使うために下のリンクからダウンロードしました。</p>
+    <p><a href="https://getbootstrap.com/docs/4.3/getting-started/download/">Bootstrap</a></p>
+  <p><b>TensorFlow・Keras・Python・Flaskで作る機械学習アプリ開発入門</b></p>
+    <p><a href="https://www.udemy.com/tensorflow-advanced/">リンク</a></p>
+    <p>環境構築、データの前処理、deeplearningモデル制作、flaskで実装という全体の流れはここから学びました。</p>
+  <p><b>Keras公式サイト</b></p>
+    <p><a href="https://keras.io/examples/cifar10_cnn">リンク</a></p>
+    <p>CNNネットワークの実装は流石に自分では無理だったので、公式サイトのCIFAR10の実装コードを参考にしました。</p>
+  <p><b>flask公式サイト</b><p>
+    <p><a href="http://flask.pocoo.org/docs/1.0/patterns/fileuploads" >リンク</a></p>
+    <p>ファイルのアップロードの実装はpaizaラーニングになかったため、公式サイトを参考にしました。</p>
+  <p><b>Paizaラーニング-Flask入門編1</b></p>
+    <p><a href="https://paiza.jp/works/flask/primer/beginner-flask1">リンク</a></p>
+    <p>pythonの引数をhtmlに組み込んだり、テンプレートの分割方法はこのサイトを参考にしました。</p>
+  <p><b>PILで画像処理を行う</b><p>
+    <p><a href="http://ishidate.my.coocan.jp/vpy_8/vpy_8.htm">リンク</a><p>
+    <p>画像のデータ水増しのためのコードを改良するために参考にしました。<p>
+  <p><b>初めてのTensorFlow──数式なしのディープラーニング-足立悠 (著)</b></p>
+    <p><a href="https://www.amazon.co.jp/dp/B07F9MF76G/ref=cm_sw_r_tw_dp_U_x_-DVYCb0GPJ4NQ">リンク</a></p>
+    <p>GW前に図書館でこの本を借りて一通りdeeplearningに触りました。CNNなどのニューラルネットワークの知識はこの本から学びました。</p>
+  <p style="margin-bottom:2em"></p>
+  <p><a href="/">動物版に戻る</a></p>
+  <p><a href="/anime">アニメ版に戻る</a></p>
+  <p><a href="/dogcat">犬猫版に戻る</a></p>
+</font>
+  </body>
+{% endif %}
+</head>
+  </html>
+{% endblock %}
