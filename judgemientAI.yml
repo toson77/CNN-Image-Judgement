@@ -1,5 +1,0 @@
-name: tensorflow
-channels:
-  - defaults
-prefix: C:\Users\nori\Anaconda3\envs\tensorflow\envs\tensorflow
-
