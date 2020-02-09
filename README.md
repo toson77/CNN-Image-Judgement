@@ -14,3 +14,6 @@ pillow
 ディレクトリ上で
 set FLASK_APP=main.py
 flask run
+
+## Explanation
+https://tosonshirley.hatenablog.com/entry/2019/09/11/234750
