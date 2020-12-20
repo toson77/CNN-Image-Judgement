@@ -1,7 +1,5 @@
-# Image-Judgement-AI
-
 ## Overview
-お試しでKerasを使って書いた,CNN画像判定AI
+お試しでKerasを使って書いた,CNN画像判定
 
 ## Execution environment
 anaconda1.68
